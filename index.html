@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ABC Bank Demo</title>
+    <script
+      id="pega-wm-chat"
+      src="https://widget.use1.chat.pega.digital/48a6b4ad-606f-47d2-8fb6-505d7a3443a9/widget.js"
+    ></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+
+      header {
+        background-color: #1a1a1a;
+        color: #fff;
+        padding: 1em 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .center {
+        justify-content: center;
+      }
+
+      .logo {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #fff;
+        text-decoration: none;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+      }
+
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 15px;
+        font-weight: bold;
+        transition: color 0.3s;
+      }
+
+      nav a:hover,
+      .dropdown a:hover {
+        color: lightskyblue;
+      }
+
+      form {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+
+      button {
+        grid-column: span 2;
+        background-color: lightskyblue;
+        color: #1a1a1a;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .button:hover {
+        background-color: #ffa500;
+      }
+
+      .button {
+        display: inline-block;
+        padding: 10px 20px;
+        text-decoration: none;
+        background-color: lightskyblue;
+        color: #1a1a1a;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      .hero-section {
+        background-image: url("heroImage.jpg");
+        background-size: cover;
+        background-position: center;
+        color: #fff;
+        text-align: center;
+        padding: 100px 0;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .hero-content h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+      }
+
+      .hero-content p {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      footer {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        text-align: center;
+        padding: 1em;
+        background-color: #1a1a1a;
+        color: #fff;
+      }
+
+      .dropdown {
+        float: left;
+        overflow: hidden;
+      }
+
+      .dropdown .drop-btn {
+        font-size: 16px;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 14px 16px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        border-radius: 5px;
+      }
+
+      .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+        margin: 0;
+        border-radius: 5px;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #ddd;
+        color: #7e5710;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <h1>vPlus</h1>
+        <nav>
+          <a href="#">Home</a>
+          <a href="#">Accounts</a>
+          <div class="dropdown">
+            <a href="#" class="drop-btn">Services</a>
+            <div class="dropdown-content">
+              <a href="#">Create dispute</a>
+            </div>
+          </div>
+          <a href="#" id="contactButton">Contact Us</a>
+        </nav>
+        <a href="#" class="button">Login</a>
+      </div>
+    </header>
+
+    <div id="hero" class="hero-section">
+      <div class="hero-content">
+        <h1>Welcome to vPlus Bank</h1>
+        <p>Experience seamless online banking for all your financial needs.</p>
+        <a href="#" class="button">Get Started</a>
+      </div>
+    </div>
+
+    <main>
+      <div class="container center">
+        <p>
+          This is a demo website. Any transaction or data entered here are not
+          real.
+        </p>
+      </div>
+
+      <form id="leadForm" class="hidden">
+        <div>
+          <label for="leadName">Lead Name:</label>
+          <input
+            type="text"
+            id="leadName"
+            name="LeadName"
+            value="Axiata Business Lead"
+            required
+          />
+
+          <label for="leadOwner">Lead Owner:</label>
+          <input
+            type="email"
+            id="leadOwner"
+            name="LeadOwner"
+            value="CKahandawa@virtusa.com"
+            required
+          />
+
+          <label for="leadRating">Lead Rating:</label>
+          <input
+            type="text"
+            id="leadRating"
+            name="LeadRating"
+            value="2-Warm"
+            required
+          />
+
+          <label for="leadCompanyName">Lead Company Name:</label>
+          <input
+            type="text"
+            id="leadCompanyName"
+            name="LeadCompanyName"
+            value="Campaign"
+            required
+          />
+
+          <label for="leadEmail">Lead Email:</label>
+          <input
+            type="email"
+            id="leadEmail"
+            name="LeadEmail"
+            value="ABC@abc.com"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="firstName">First Name:</label>
+          <input
+            type="text"
+            id="firstName"
+            name="FirstName"
+            value="Arif"
+            required
+          />
+
+          <label for="lastName">Last Name:</label>
+          <input
+            type="text"
+            id="lastName"
+            name="LastName"
+            value="Hanapi"
+            required
+          />
+
+          <label for="leadPhone">Lead Phone:</label>
+          <input
+            type="tel"
+            id="leadPhone"
+            name="LeadPhone"
+            value="0392221360"
+            required
+          />
+
+          <label for="leadMobile">Lead Mobile:</label>
+          <input
+            type="tel"
+            id="leadMobile"
+            name="LeadMobile"
+            value="6031234568"
+            required
+          />
+
+          <label for="territoryName">Territory Name:</label>
+          <input
+            type="text"
+            id="territoryName"
+            name="TerritoryName"
+            value="Global"
+            required
+          />
+
+          <label for="territoryID">Territory ID:</label>
+          <input
+            type="text"
+            id="territoryID"
+            name="TerritoryID"
+            value="BT1"
+            required
+          />
+
+          <label for="industry">Industry:</label>
+          <input
+            type="text"
+            id="industry"
+            name="Industry"
+            value="Retail"
+            required
+          />
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          var heroSection = document.querySelector(".hero-section");
+          var contactButton = document.getElementById("contactButton");
+          var leadForm = document.getElementById("leadForm");
+
+          contactButton.addEventListener("click", function () {
+            // Toggle the 'hidden' class on the hero section
+            heroSection.classList.toggle("hidden");
+            leadForm.classList.toggle("hidden");
+          });
+
+          leadForm.addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+
+            // Get form data
+            var formData = new FormData(leadForm);
+            var formDataObject = {};
+
+            // Wrap form data in the 'content' object
+            formDataObject.content = {};
+            formData.forEach(function (value, key) {
+              formDataObject.content[key] = value;
+            });
+
+            // Add hardcoded values for caseTypeID and processID
+            formDataObject.caseTypeID = "VPlus-SA-Work-Lead-Ind";
+            formDataObject.processID = "pyStartCase";
+
+            // Encode credentials for basic authorization
+            var username = "apitestadmin";
+            var password = "rules@123";
+            var credentials = btoa(username + ":" + password);
+
+            // Perform JSON request with basic authorization and form data
+            fetch("https://virtusa04.pegalabs.io/prweb/api/v1/cases", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: "Basic " + credentials,
+              },
+              body: JSON.stringify(formDataObject),
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                // Handle the response as needed
+                console.log("Success:", data);
+              })
+              .catch((error) => {
+                // Handle errors
+                console.error("Error:", error);
+              });
+          });
+        });
+      </script>
+    </main>
+
+    <footer>&copy; 2023 vPlus Bank. All rights reserved.</footer>
+  </body>
+</html>
