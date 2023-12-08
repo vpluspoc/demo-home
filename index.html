@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ABC Bank Demo</title>
+    <title>vPlus Bank Demo</title>
     <script
       id="pega-wm-chat"
       src="https://widget.use1.chat.pega.digital/48a6b4ad-606f-47d2-8fb6-505d7a3443a9/widget.js"
@@ -21,6 +21,11 @@
         color: #fff;
         padding: 1em 0;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .msg-box {
+        display: flex;
+        flex-direction: column;
       }
 
       .container {
@@ -197,6 +202,10 @@
       .dropdown:hover .dropdown-content {
         display: block;
       }
+
+      .green-text {
+        color: green;
+      }
     </style>
   </head>
 
@@ -228,11 +237,12 @@
     </div>
 
     <main>
-      <div class="container center">
+      <div class="container center msg-box">
         <p>
           This is a demo website. Any transaction or data entered here are not
           real.
         </p>
+        <p class="green-text"></p>
       </div>
 
       <form id="leadForm" class="hidden">
@@ -356,6 +366,7 @@
           var heroSection = document.querySelector(".hero-section");
           var contactButton = document.getElementById("contactButton");
           var leadForm = document.getElementById("leadForm");
+          var responseMsg = document.querySelector(".green-text");
 
           contactButton.addEventListener("click", function () {
             // Toggle the 'hidden' class on the hero section
@@ -398,6 +409,9 @@
               .then((data) => {
                 // Handle the response as needed
                 console.log("Success:", data);
+                let responseMsgText =
+                  data.ID.slice(-9, undefined) + " is successfully created.";
+                responseMsg.textContent = responseMsgText;
               })
               .catch((error) => {
                 // Handle errors
