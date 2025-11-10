@@ -388,16 +388,16 @@
             });
 
             // Add hardcoded values for caseTypeID and processID
-            formDataObject.caseTypeID = "VPlus-SA-Work-Lead-Ind";
+            formDataObject.caseTypeID = "MyOrg-LoanOrig-Work-LoanOrigination";
             formDataObject.processID = "pyStartCase";
 
             // Encode credentials for basic authorization
-            var username = "apitestadmin";
-            var password = "rules@123";
+            var username = "serviceuser";
+            var password = "rules";
             var credentials = btoa(username + ":" + password);
 
             // Perform JSON request with basic authorization and form data
-            fetch("https://virtusa04.pegalabs.io/prweb/api/v1/cases", {
+            fetch("https://cnlospoc.pegatsdemo.com/prweb/api/v1/cases", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
